@@ -1,0 +1,4 @@
+Modalidades: ['Andebol', 'Atletismo', 'BTT', 'Badminton', 'Basquetebol', 'Ciclismo', 'Dança', 'Equitação', 'Esgrima', 'Futebol', 'Karaté', 'Orientação', 'Parapente', 'Patinagem', 'Triatlo']
+Aptos: 162 (54.0%)
+Inaptos: 138 (46.0%)
+Distribuição de escalões: {'20-24': 80, '25-29': 102, '30-34': 104, '35-39': 14}
