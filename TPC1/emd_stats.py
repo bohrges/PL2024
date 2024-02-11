@@ -55,10 +55,15 @@ print(dict(sorted(idades_nomes.items())))
 file_res = open('res.txt', 'w+')
 file_res.write(f"Modalidades: {modalidades}\n")
 file_res.write(f"Aptos: {aptos} ({pct_aptos}%)\nInaptos: {inaptos} ({pct_inaptos}%)\n")
+<<<<<<< HEAD
 file_res.write(f"Distribuição de escalões: {dict(sorted(idades.items()))}\n") 
 file_res.write(f"Distribuição de escalões por nomes: {dict(sorted(idades_nomes.items()))}") 
 
 print("\nfile res.txt created")
 
 
+=======
+file_res.write(f"Distribuição de escalões: {dict(sorted(idades.items()))}") 
+print("res.txt file created")
+>>>>>>> a5daa8634c1162cf06734a576698737bdd81f017
 
