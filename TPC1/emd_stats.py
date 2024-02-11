@@ -6,6 +6,7 @@ modalidades = [] # lista de modalidades
 aptos = 0 # total de atletas aptos
 total = 0 # total de atletas
 idades = {} # dicionário de faixas etárias
+idades_nomes = {} # dicionário com a lista dos nomes para cada faixa etária
 
 def getEscalao(n): # Obtém o escalão correspondente a cada idade
     if n%10 > 4:
@@ -28,8 +29,10 @@ for linha in file:
     escalao = getEscalao(int(info[5]))
     if escalao in idades.keys(): 
         idades[escalao] = idades[escalao] + 1
+        idades_nomes[escalao].append(info[3] + " " + info[4])
     else:
         idades[escalao] = 1
+        idades_nomes[escalao] = [info[3] + " " + info[4]]
 file.close()
 
 # organizar e printar a informação
@@ -46,11 +49,16 @@ print(f"Inaptos: {inaptos} ({pct_inaptos}%)")
 
 print("\n----- Distribuição etária -----")
 print(dict(sorted(idades.items())))
+print(dict(sorted(idades_nomes.items())))
 
 # gerar um ficheiro com a informação
 file_res = open('res.txt', 'w+')
 file_res.write(f"Modalidades: {modalidades}\n")
 file_res.write(f"Aptos: {aptos} ({pct_aptos}%)\nInaptos: {inaptos} ({pct_inaptos}%)\n")
-file_res.write(f"Distribuição de escalões: {dict(sorted(idades.items()))}") 
+file_res.write(f"Distribuição de escalões: {dict(sorted(idades.items()))}\n") 
+file_res.write(f"Distribuição de escalões por nomes: {dict(sorted(idades_nomes.items()))}") 
+
+print("\nfile res.txt created")
+
 
 
