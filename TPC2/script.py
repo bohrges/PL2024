@@ -9,10 +9,10 @@ def main():
         pattern1 = r'^# ' # Header 1
         pattern2 = r'^## ' # Header 2
         pattern3 = r'^### ' # Header 3
-        pattern4 = r"(?<!\*)\*{2}([^\*]+?)\*{2}(?!\*)" # Bold
+        pattern4 = r"(?<!\*)\*{2}([^\*]+?)\*{2}(?!\*)" # Bold (Uses lookbehind (?<!\*) and lookahead (?!\*) to make sure it only acts when there are exactly 2 *)
         pattern5 = r"(?<!\*)\*{1}([^\*]+?)\*{1}(?!\*)" # Italic
         pattern6 = r"^1. (.*?)$" # First element on the list
-        pattern7 = r"^[2-9]. (.*?)$" # Other elements on the list
+        pattern7 = r"^[2-9]. (.*?)$" # Other elements on the list   
         pattern8 = r"\[(.*?)\]\((.*?)\)" # Link
         pattern9 = r"\!\[(.*?)\]\((.*?)\)" # Img
     
