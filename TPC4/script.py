@@ -1,54 +1,33 @@
-import sys
-import re
+import ply.lex as lex
 
-def tokenize(code):
-    token_specification = [
-        ('NUM',        r'\d+'),             
-        ('SELECT',     r'Select'),
-        ('FROM',       r'from'),
-        ('WHERE',      r'where'),
-        ('SIMB',       r'==|>=|<='),            
-        ('NEWLINE',    r'\n'),           
-        ('SKIPSPACE',  r'[ \t]+'),     
-        ('COMMA',      r','),
-        ('VAR',        r'\w+'),
-        ('ERRO',       r'.')          
-    ]
+def ex1():
+    tokens = (
+    'NUM',
+    'RW',  # reserved word
+    'VAR',
+    'MATH_SIGN',
+    'COMMA'
+    )
 
-    tok_regex = '|'.join('(?P<%s>%s)' % pair for pair in token_specification)
-    reconhecidos = []
-    linha = 1
-    mo = re.finditer(tok_regex, code)
-    for m in mo:
-        dic = m.groupdict()
-        if dic['NUM'] is not None:
-            t = ("NUM", int(dic['NUM']), linha, m.span())
-        elif dic['SELECT'] is not None:
-            t = ("SELECT", "SELECT", linha, m.span())
-        elif dic['FROM'] is not None:
-            t = ("FROM", dic['FROM'], linha, m.span())
-        elif dic['WHERE'] is not None:
-            t = ("WHERE", dic['WHERE'], linha, m.span())
-        elif dic['SIMB'] is not None:
-            t = ("SIMB", dic['SIMB'], linha, m.span())
-        elif dic['NEWLINE'] is not None:
-            t = ("NEWLINE", dic['NEWLINE'], linha, m.span())
-        elif dic['SKIPSPACE'] is not None:
-            t = ("SKIPSPACE", dic['SKIPSPACE'], linha, m.span())
-        elif dic['COMMA'] is not None:
-            t = ("COMMA", dic['COMMA'], linha, m.span())
-        elif dic['VAR'] is not None:
-            t = ("VAR", dic['VAR'], linha, m.span())
-        else:
-            t = ("ERRO", m.group(), linha, m.span())
-        reconhecidos.append(t)
+    t_NUM = r'\d+'
+    t_RW = r'(Select|from|where)'
+    t_VAR = r'\w+'
+    t_MATH_SIGN = r'((>=*)|(<=*)|=)'
+    t_COMMA = r','
+    t_ignore = ' \t\n'
+    def t_error(t):
+        print(f"Illegal char {t.value[0]}")
+        t.lexer.skip(1)
 
-    return reconhecidos
+    lexer = lex.lex()
 
-linha ='''Select id, noun, salario 
+    data = '''Select id, noun, salario 
     from empregados 
         where salario >= 820
 '''
+    lexer.input(data)
+    while tok := lexer.token():
+        print(tok)
 
-for tok in tokenize(linha):
-    print(tok)
+ex1()
+
