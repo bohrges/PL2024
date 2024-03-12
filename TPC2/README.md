@@ -1,4 +1,4 @@
-# TPC1: Conversor de MD para HTML
+# TPC2: Conversor de MD para HTML
 ## 2024-02-21
 
 ## Autor
