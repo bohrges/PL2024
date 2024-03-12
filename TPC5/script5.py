@@ -59,6 +59,7 @@ def prog():
     
     def t_SAIR(t):
         r'SAIR'
+        print("TROCO: " + str(saldo))
         return t
 
     t_ignore  = ' \t'
