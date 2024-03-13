@@ -1,0 +1,22 @@
+{
+    "stock": [
+        {
+            "cod": "A12",
+            "nome": "agua",
+            "quant": 8,
+            "preco": 0.3
+        },
+        {
+            "cod": "A34",
+            "nome": "sumo",
+            "quant": 10,
+            "preco": 0.9
+        },
+        {
+            "cod": "A56",
+            "nome": "pao ",
+            "quant": 1,
+            "preco": 1.4
+        }
+    ]
+}
